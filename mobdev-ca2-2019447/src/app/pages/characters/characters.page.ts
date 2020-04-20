@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class CharactersPage implements OnInit {
+    
     characters: Observable<any>;
 
     constructor(private router: Router, private http: HttpClient) { }
