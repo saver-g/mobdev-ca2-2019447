@@ -20,7 +20,7 @@ export class CharacterDetailsPage implements OnInit {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
         this.api.getCharacter(this.characterId).subscribe(res => {
             this.character = res[0];
-            console.log(JSON.stringify(this.character.characterId));
+            console.log(JSON.stringify(this.character.character_id));
         })
 
         this.favouriteService.isLiked(this.characterId).then(isFav => {
