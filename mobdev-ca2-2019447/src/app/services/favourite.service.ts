@@ -8,13 +8,14 @@ const STORAGE_KEY_3 = 'favouriteQuotes';
 @Injectable({
     providedIn: 'root'
 })
+
 export class FavouriteService {
 
     constructor(private storage: Storage) { }
 
 
     // A. Favourite Episodes
-    
+
     getAllFavouriteEpisodes() {
         return this.storage.get(STORAGE_KEY_1);
     }
