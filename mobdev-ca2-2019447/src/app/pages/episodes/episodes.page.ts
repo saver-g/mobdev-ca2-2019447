@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApiService } from '../../services/api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-episodes',
-  templateUrl: './episodes.page.html',
-  styleUrls: ['./episodes.page.scss'],
+    selector: 'app-episodes',
+    templateUrl: './episodes.page.html',
+    styleUrls: ['./episodes.page.scss'],
 })
 
 export class EpisodesPage implements OnInit {
-  
-  episodes: Observable<any>;
 
-  constructor(private router: Router, private api: ApiService) { }
+    episodes: Observable<any>;
 
-  ngOnInit() {
-      this.episodes = this.api.getEpisodes();
-  }
+    constructor(private router: Router, private http: HttpClient) { }
 
-  openDetails(episode) {
-      let episodeId = episode.episode_id;
-      this.router.navigateByUrl('/tabs/episodes/${episodeId}');
-  }
+    ngOnInit() {
+        this.episodes = this.http.get('https://breakingbadapi.com/episodes');
+        this.episodes.subscribe(data => {
+            console.log('my data: ', data);
+        })
+    }
+
+    openDetails(episode) {
+        let episodeId = episode.episode_id;
+        this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);
+    }
 }
