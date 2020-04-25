@@ -16,7 +16,7 @@ export class EpisodesPage implements OnInit {
     constructor(private router: Router, private http: HttpClient) { }
 
     ngOnInit() {
-        this.episodes = this.http.get('https://breakingbadapi.com/episodes');
+        this.episodes = this.http.get('https://breakingbadapi.com/api/episodes');
         this.episodes.subscribe(data => {
             console.log('my data: ', data);
         })
