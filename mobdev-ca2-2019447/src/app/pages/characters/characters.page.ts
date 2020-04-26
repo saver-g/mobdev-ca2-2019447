@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
     selector: 'app-characters',
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class CharactersPage implements OnInit {
 
+    data = [];
     characters: Observable<any>;
 
     constructor(private router: Router, private http: HttpClient) { }
@@ -25,5 +27,16 @@ export class CharactersPage implements OnInit {
     openDetails(character) {
         let characterId = character.char_id;
         this.router.navigateByUrl(`/tabs/characters/${characterId}`);
+    }
+
+    doInfinite(infiniteScroll) {
+        setTimeout(() => {
+            for(let i = 0; i < 25; i++) {
+                this.data.push(this.data.length);
+            }
+
+            console.log('Done');
+            infiniteScroll.complete();
+        }, 500);
     }
 }
