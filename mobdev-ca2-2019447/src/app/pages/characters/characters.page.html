@@ -1,19 +1,34 @@
+<!--Source: https://ionicframework.com/docs/api/infinite-scroll-->
+
+<!--Page Header-->
 <ion-header>
 	<ion-toolbar color="primary">
 		<ion-title>Characters</ion-title>
 	</ion-toolbar>
 </ion-header>
 
+<!--Page Content-->
 <ion-content>
+
+	<!--List to display all characters-->
 	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let character of characters | async"
-			(click)="openDetails(character)">
+
+		<!--Items generated using for loop to print characters' names and on-click show details-->
+		<ion-item button detail lines="inset" *ngFor="let character of characters" (click)="openDetails(character)">
 			{{ character.name }}
+
+			<!--Avatar to display characters' images-->
+			<ion-avatar slot="start">
+				<img class="profile_pic" src="{{ character.img }}">
+            </ion-avatar>
+
 		</ion-item>
 	</ion-list>
 
-	<ion-infinite-scroll (ionInfinite)="doInfinite($infiniteScroll)">
+	<!--Infinite Scroll to display more characters as user scrolls down-->
+	<ion-infinite-scroll threshold="10%" (ionInfinite)="loadData($event)">
 		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters...">
 		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>
+
 </ion-content>

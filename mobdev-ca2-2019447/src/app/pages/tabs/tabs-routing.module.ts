@@ -1,3 +1,5 @@
+// Source: Mikhail Timofeev --> Mobile Development Slides & Classes
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
