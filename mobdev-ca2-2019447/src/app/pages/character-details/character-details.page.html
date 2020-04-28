@@ -1,69 +1,86 @@
+<!--Page Header-->
 <ion-header>
 	<ion-toolbar color="primary">
+
+		<!--Back-Navigation-->
 		<ion-buttons slot="start">
 			<ion-back-button defaulthref="/tabs/characters"></ion-back-button>
 		</ion-buttons>
 
+		<!--Generating character's name as title-->
 		<ion-title>{{ character?.name }}</ion-title>
 
+		<!--Favourite Character-->
 		<ion-buttons slot="end">
+
+			<!--Function to unfavourite character if it is favourite and button is clicked-->
 			<ion-button (click)="unfavouriteCharacter()" *ngIf="isLiked">
 				<ion-icon color="warning" name="heart" slot="icon-only"></ion-icon>
 			</ion-button>
 
+			<!--Function to favourite character if it is unfavourited and button is clicked-->
 			<ion-button (click)="favouriteCharacter()" *ngIf="!isLiked">
 				<ion-icon color="warning" name="heart-outline" slot="icon-only"></ion-icon>
 			</ion-button>
-
 		</ion-buttons>
+
 	</ion-toolbar>
 </ion-header>
 
+<!--Page Content-->
 <ion-content padding="">
-	<ion-card class="movie-card" *ngIf="character">
+	<ion-card class="container-card" *ngIf="character">
 
-		<ion-item class="movie-info" lines="none" padding="">
-			<img [src]="character.img" >
+		<!--Character's Picture-->
+		<ion-item lines="none" padding="">
+			<img class="picture" src="{{ character.img }}" >
         </ion-item>
 
-			<ion-item class="movie-info" lines="none">
+            <!--Character's Nickname-->
+			<ion-card-subtitle>
+				<p class="subtitle"> {{ character?.nickname }} </p>
+			</ion-card-subtitle>
+
+			<!--Character's ID-->
+			<ion-item lines="none">
 				<ion-icon color="warning" name="finger-print-outline" slot="start"></ion-icon>
-				ID: {{ character.char_id }}
+				<p> <strong> ID: </strong> {{ character.char_id }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
-				<ion-icon color="warning" name="gift-outline" slot="start"></ion-icon>
-				Birthday: {{ character.birthday }}
+			<!--Character's Birthday-->
+			<ion-item lines="none">
+				<ion-icon color="warning" name="calendar-outline" slot="start"></ion-icon>
+				<p> <strong> Birthday: </strong> {{ character.birthday }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
+			<!--Character's Occupation-->
+			<ion-item lines="none">
 				<ion-icon color="warning" name="school-outline" slot="start"></ion-icon>
-				Occupation: {{ character.occupation }}
+				<p> <strong> Occupation: </strong> {{ character.occupation }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
-				<ion-icon color="warning" name="heart-half" slot="start"></ion-icon>
-				Status: {{ character.status }}
+			<!--Character's Status-->
+			<ion-item lines="none">
+				<ion-icon color="warning" name="pulse" slot="start"></ion-icon>
+				<p> <strong> Status: </strong> {{ character.status }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
-				<ion-icon color="warning" name="walk" slot="start"></ion-icon>
-				Nickname: {{ character.nickname }}
-			</ion-item>
-
-			<ion-item class="movie-info" lines="none">
+			<!--Character's Appearance-->
+			<ion-item lines="none">
 				<ion-icon color="warning" name="eye-outline" slot="start"></ion-icon>
-				Appearance: {{ character.appearance }}
+				<p> <strong> Appearance: </strong> {{ character.appearance }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
+			<!--Character's Actor-->
+			<ion-item lines="none">
 				<ion-icon color="warning" name="videocam-outline" slot="start"></ion-icon>
-				Portrayed by: {{ character.portrayed }}
+				<p> <strong> Portrayed by: </strong> {{ character.portrayed }} </p>
 			</ion-item>
 
-			<ion-item class="movie-info" lines="none">
+			<!--Category-->
+			<ion-item lines="none">
 				<ion-icon color="warning" name="tv-outline" slot="start"></ion-icon>
-				Category: {{ character.category }}
+				<p> <strong> Category: </strong> {{ character.category }} </p>
 			</ion-item>
 
 	</ion-card>

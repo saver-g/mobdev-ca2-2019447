@@ -19,7 +19,7 @@
 
 			<!--Avatar to display characters' images-->
 			<ion-avatar slot="start">
-				<img class="profile_pic" src="{{ character.img }}">
+				<img class="profile" src="{{ character.img }}">
             </ion-avatar>
 
 		</ion-item>
@@ -27,8 +27,7 @@
 
 	<!--Infinite Scroll to display more characters as user scrolls down-->
 	<ion-infinite-scroll threshold="10%" (ionInfinite)="loadData($event)">
-		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters...">
-		</ion-infinite-scroll-content>
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters..."></ion-infinite-scroll-content>
 	</ion-infinite-scroll>
 
 </ion-content>
