@@ -1,13 +1,27 @@
+<!--Page Header-->
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Episodes</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>Episodes</ion-title>
+	</ion-toolbar>
 </ion-header>
 
+<!--Page Content-->
 <ion-content>
-    <ion-list>
-        <ion-item button detail lines="inset" *ngFor="let episode of episodes | async" (click)="openDetails(episode)">
-        {{ episode.title }}
-        </ion-item>
-    </ion-list>
+
+	<!--List to display all episodes-->
+	<ion-list>
+
+		<!--Items generated using for loop to print episodes' titles and on-click show details-->
+		<ion-item button detail lines="inset" *ngFor="let episode of episodes | async" (click)="openDetails(episode)">
+
+			<!--Avatar to display an ionicon-->
+			<ion-icon name="film-outline" slot="start"></ion-icon>
+
+			<ion-label>
+				{{ episode.title }}
+				<p class="subtitle"> Season {{ episode.season }} Episode {{ episode.episode_id }} </p>
+			</ion-label>
+
+		</ion-item>
+	</ion-list>
 </ion-content>
