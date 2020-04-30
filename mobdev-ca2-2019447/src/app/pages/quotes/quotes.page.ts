@@ -22,17 +22,17 @@ export class QuotesPage implements OnInit {
     ngOnInit() {
         this.quotes = this.api.getQuotes();
         this.quotes.subscribe(data => {
+            this.quotes_array = [data];
             console.log(this.quotes_array);
         });
     }
 
+    // Function for the searchbar
     getQuoteKey(event) {
         const keyword = event.target.value;
         this.findKey = keyword;
         console.log(keyword);
     }
-
-
 
     // Retrieves quotes' id by 'routing' to a new page (details)
     openDetails(quote) {
