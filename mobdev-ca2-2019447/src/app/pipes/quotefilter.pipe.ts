@@ -22,7 +22,8 @@ export class QuotefilterPipe implements PipeTransform {
         return quotes.filter(quote => {
 
             // Functions to check if entered keyword is a quote or author
-            return quote.quote.toLocalLowerCase().includes(keyword) || quote.author.toLocalLowerCase().includes(keyword);
+            return quote.quote.toLocalLowerCase().includes(keyword)
+            || quote.author.toLocalLowerCase().includes(keyword);
         })
     }
 }

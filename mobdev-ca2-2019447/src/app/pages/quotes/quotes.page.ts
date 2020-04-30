@@ -27,7 +27,7 @@ export class QuotesPage implements OnInit {
         });
     }
 
-    // Function for the searchbar
+    // Function for the quote searchbar
     getQuoteKey(event) {
         const keyword = event.target.value;
         this.findKey = keyword;

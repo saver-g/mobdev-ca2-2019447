@@ -1,15 +1,52 @@
 <!--Page Header-->
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Deaths</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>Deaths</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <!--Page Content-->
 <ion-content>
-    <ion-card>
-        <ion-item *ngFor="let death of (deaths | async)">
-        Death-Count: {{ death.deathCount }}
-        </ion-item>
-    </ion-card>
+	<ion-toolbar>
+		<ion-searchbar placeholder="Search deaths..." (ionChange)="getDeathKey($event)"></ion-searchbar>
+	</ion-toolbar>
+
+	<!--List to display all deaths-->
+	<ion-list>
+
+		<!--Items generated using for loop to print deaths' details and on-click show details-->
+		<ion-card detail lines="inset" *ngFor="let death of deaths | async | deathfilter: findKey">
+
+			<!--Header to display deaths' victims-->
+			<ion-card-header>
+				<ion-card-title> {{ death.death }} </ion-card-title>
+			</ion-card-header>
+
+			<!--Content to display deaths' season, episodes, # of deaths so far and in episode-->
+			<ion-card-content>
+				<p> Season {{ death.season }} Episode {{ death.episode }} </p>
+				<p style="font-size: 13px"> # of deaths so far: {{ death.death_id }} </p>
+				<p style="font-size: 13px"> # of deaths in ep: {{ death.number_of_deaths }} </p>
+			</ion-card-content>
+
+			<!--Item to display deaths' suspect-->
+			<ion-item lines="none">
+				<ion-icon color="warning" name="finger-print-outline" slot="start"></ion-icon>
+				<p> <strong> Suspect: </strong> {{ death.responsible }} </p>
+			</ion-item>
+
+			<!--Item to display deaths' cause-->
+			<ion-item lines="none">
+				<ion-icon color="warning" name="bandage-outline" slot="start"></ion-icon>
+				<p> <strong> Cause: </strong> {{ death.cause }} </p>
+			</ion-item>
+
+			<!--Item to display deaths' victims' last words-->
+			<ion-item lines="none">
+				<ion-icon color="warning" name="mic-outline" slot="start"></ion-icon>
+				<p> <strong> Last words: </strong> <i> "{{ death.last_words }}" </i> </p>
+			</ion-item>
+
+		</ion-card>
+	</ion-list>
 </ion-content>

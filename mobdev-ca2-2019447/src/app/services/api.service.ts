@@ -43,8 +43,8 @@ export class ApiService {
         return this.http.get(`${this.baseUrl}/quotes/${id}`);
     }
 
-    // Function to retrieve deaths based on ID
-    getDeath(id) {
-        return this.http.get(`${this.baseUrl}/deaths/${id}`);
+    // Function to retrieve all deaths
+    getDeaths() {
+        return this.http.get(`${this.baseUrl}/deaths`);
     }
 }
