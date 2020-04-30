@@ -36,9 +36,9 @@
 			<img class="picture" src="{{ character.img }}" >
         </ion-item>
 
-            <!--Character's Nickname-->
+			<!--Character's Nickname-->
 			<ion-card-subtitle>
-				<p class="subtitle"> {{ character?.nickname }} </p>
+				<p class="subtitle"> Portrayed by {{ character.portrayed }} </p>
 			</ion-card-subtitle>
 
 			<!--Character's ID-->
@@ -69,12 +69,6 @@
 			<ion-item lines="none">
 				<ion-icon color="warning" name="eye-outline" slot="start"></ion-icon>
 				<p> <strong> Appearance: </strong> {{ character.appearance }} </p>
-			</ion-item>
-
-			<!--Character's Actor-->
-			<ion-item lines="none">
-				<ion-icon color="warning" name="videocam-outline" slot="start"></ion-icon>
-				<p> <strong> Portrayed by: </strong> {{ character.portrayed }} </p>
 			</ion-item>
 
 			<!--Category-->

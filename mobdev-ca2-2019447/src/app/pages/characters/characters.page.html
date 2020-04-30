@@ -15,19 +15,25 @@
 
 		<!--Items generated using for loop to print characters' names and on-click show details-->
 		<ion-item button detail lines="inset" *ngFor="let character of characters" (click)="openDetails(character)">
-			{{ character.name }}
 
 			<!--Avatar to display characters' images-->
 			<ion-avatar slot="start">
 				<img class="profile" src="{{ character.img }}">
             </ion-avatar>
 
+                <!--Label to display characters' nickname-->
+				<ion-label>
+					{{ character.name }}
+					<p class="label"> {{ character?.nickname }} </p>
+				</ion-label>
+
 		</ion-item>
 	</ion-list>
 
 	<!--Infinite Scroll to display more characters as user scrolls down-->
 	<ion-infinite-scroll threshold="10%" (ionInfinite)="loadData($event)">
-		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters..."></ion-infinite-scroll-content>
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters...">
+		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>
 
 </ion-content>
