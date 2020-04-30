@@ -1,17 +1,33 @@
+<!--Page Header-->
 <ion-header>
 	<ion-toolbar color="primary">
 		<ion-title>Quotes</ion-title>
 	</ion-toolbar>
 </ion-header>
 
+<!--Page Content-->
 <ion-content>
 	<ion-toolbar>
-		<ion-searchbar color="dark" showCancelButton="never"></ion-searchbar>
+		<ion-searchbar placeholder="Search keywords..." (ionChange)="getQuoteKey($event)"></ion-searchbar>
 	</ion-toolbar>
 
+	<!--List to display all quotes-->
 	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
-			{{ quote.quote }}
-		</ion-item>
+
+		<!--Items generated using for loop to print quotes' texts and on-click show details-->
+		<ion-card button detail lines="inset" *ngFor="let quote of quotes | async | filter: findKey" (click)="openDetails(quote)">
+			
+            <!--Header to display quotes' texts-->
+            <ion-card-header>
+				<ion-card-title><i> "{{ quote.quote }}" </i></ion-card-title>
+			</ion-card-header>
+
+            <!--Content to display quotes' authors-->
+			<ion-card-content>
+				<ion-icon name="person-outline" slot="start"></ion-icon>
+                {{ quote.author }}
+			</ion-card-content>
+
+		</ion-card>
 	</ion-list>
 </ion-content>
