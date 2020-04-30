@@ -1,3 +1,5 @@
+// Source: https://codeburst.io/create-a-search-pipe-to-dynamically-filter-results-with-angular-4-21fd3a5bec5c
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -16,7 +18,7 @@ export class DeathfilterPipe implements PipeTransform {
         // Converts entered keyword to lower case
         keyword = keyword.toLocaleLowerCase();
 
-        //This returns the results of filtering the array according to the keyword
+        // Function to return results based on entered keyword
         return deaths.filter(death => {
 
             // Functions to check if entered keyword is a death name, responsible, cause or last words

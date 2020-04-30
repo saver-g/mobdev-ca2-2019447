@@ -8,6 +8,7 @@ import { ApiService } from '../../services/api.service';
     templateUrl: './deaths.page.html',
     styleUrls: ['./deaths.page.scss'],
 })
+
 export class DeathsPage implements OnInit {
 
     // Variables declared

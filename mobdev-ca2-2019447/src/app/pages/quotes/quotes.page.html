@@ -19,13 +19,13 @@
 			
             <!--Header to display quotes' texts-->
             <ion-card-header>
-				<ion-card-title><i> "{{ quote.quote }}" </i></ion-card-title>
+				<ion-card-title> <i> "{{ quote.quote }}" </i> </ion-card-title>
 			</ion-card-header>
 
             <!--Content to display quotes' authors-->
 			<ion-card-content>
 				<ion-icon name="person-outline" slot="start"></ion-icon>
-                {{ quote.author }}
+                by {{ quote.author }} in {{ quote.series }}
 			</ion-card-content>
 
 		</ion-card>
