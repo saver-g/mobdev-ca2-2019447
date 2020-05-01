@@ -14,18 +14,23 @@ export class FavouriteService {
     constructor(private storage: Storage) { }
 
 
-    // A. Favourite Episodes
+    /* ------------------
+    A. Favourite Episodes
+    -------------------*/
 
+    // Function to retrieve all episodes
     getAllFavouriteEpisodes() {
         return this.storage.get(STORAGE_KEY_1);
     }
 
+    // Function to check whether episode is marked as favourite
     isFavourite(episodeId) {
         return this.getAllFavouriteEpisodes().then(result => {
             return result && result.indexOf(episodeId) !== -1;
         });
     }
 
+    // Function to favourite episode
     favouriteEpisode(episodeId) {
         return this.getAllFavouriteEpisodes().then(result => {
             if (result) {
@@ -37,6 +42,7 @@ export class FavouriteService {
         });
     }
 
+    // Function to unfavourite episode
     unfavouriteEpisode(episodeId) {
         return this.getAllFavouriteEpisodes().then(result => {
             if (result) {
@@ -48,18 +54,23 @@ export class FavouriteService {
     }
 
 
-    // B. Favourite Characters
+    /* --------------------
+    B. Favourite Characters
+    ---------------------*/
 
+    // Function to retrieve all characters
     getAllFavouriteCharacters() {
         return this.storage.get(STORAGE_KEY_2);
     }
 
+    // Function to check whether characters is marked as liked
     isLiked(characterId) {
         return this.getAllFavouriteCharacters().then(result => {
             return result && result.indexOf(characterId) !== -1;
         });
     }
 
+    // Function to favourite characters
     favouriteCharacter(characterId) {
         return this.getAllFavouriteCharacters().then(result => {
             if (result) {
@@ -71,6 +82,7 @@ export class FavouriteService {
         });
     }
 
+    // Function to unfavourite characters
     unfavouriteCharacter(characterId) {
         return this.getAllFavouriteCharacters().then(result => {
             if (result) {
@@ -82,18 +94,23 @@ export class FavouriteService {
     }
 
 
-    // C. Favourite Quotes
+    /* ----------------
+    C. Favourite Quotes
+    -----------------*/
 
+    // Function to retrieve all quotes
     getAllFavouriteQuotes() {
         return this.storage.get(STORAGE_KEY_3);
     }
 
+    // Function to check whether quote is marked as favourite
     isFavourited(quoteId) {
         return this.getAllFavouriteQuotes().then(result => {
             return result && result.indexOf(quoteId) !== -1;
         });
     }
 
+    // Function to favourite quotes
     favouriteQuote(quoteId) {
         return this.getAllFavouriteQuotes().then(result => {
             if (result) {
@@ -105,6 +122,7 @@ export class FavouriteService {
         });
     }
 
+    // Function to unfavourite quotes
     unfavouriteQuote(quoteId) {
         return this.getAllFavouriteQuotes().then(result => {
             if (result) {

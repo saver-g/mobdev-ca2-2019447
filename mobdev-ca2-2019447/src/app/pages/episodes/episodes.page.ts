@@ -11,10 +11,12 @@ import { HttpClient } from '@angular/common/http';
 
 export class EpisodesPage implements OnInit {
 
+    // Variables declared
     episodes: Observable<any>;
 
     constructor(private router: Router, private http: HttpClient) { }
 
+    // Initialisation
     ngOnInit() {
         this.episodes = this.http.get('https://breakingbadapi.com/api/episodes');
         this.episodes.subscribe(data => {
@@ -22,6 +24,7 @@ export class EpisodesPage implements OnInit {
         })
     }
 
+    // Retrieves episodes' id by 'routing' to a new page (details)
     openDetails(episode) {
         let episodeId = episode.episode_id;
         this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);

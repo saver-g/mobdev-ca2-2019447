@@ -31,6 +31,11 @@
 <ion-content>
 	<ion-card *ngIf="episode">
 
+        <!--Card Header-->
+		<ion-card-header>
+			<ion-card-title>Episode Details</ion-card-title>
+		</ion-card-header>
+
 		<!--Episode's ID-->
 		<ion-item class="movie-info" lines="inset">
 			<ion-icon color="warning" name="finger-print-outline" slot="start"></ion-icon>
@@ -65,11 +70,13 @@
 
 	<!--Card for characters-->
 	<ion-card>
+
+        <!--Card Header-->
 		<ion-card-header>
-			<ion-card-title>List of Characters </ion-card-title>
+			<ion-card-title>List of Characters</ion-card-title>
 		</ion-card-header>
 
-        <!--Item lists all characters in episode-->
+		<!--Item lists all characters in episode-->
 		<ion-item *ngFor="let character of characters">
 			<ion-icon color="warning" name="people" slot="start"></ion-icon>
 			{{ character }}

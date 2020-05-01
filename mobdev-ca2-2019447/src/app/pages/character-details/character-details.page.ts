@@ -10,12 +10,15 @@ import { FavouriteService } from './../../services/favourite.service';
 })
 
 export class CharacterDetailsPage implements OnInit {
+
+    // Variables declared
     character: any;
     characterId = null;
     isLiked = false;
 
     constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private favouriteService: FavouriteService) { }
 
+    // Initialisation
     ngOnInit() {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
         this.api.getCharacter(this.characterId).subscribe(res => {
@@ -23,17 +26,20 @@ export class CharacterDetailsPage implements OnInit {
             console.log(JSON.stringify(this.character.character_id));
         })
 
+        // Function to check whether character is marked as liked
         this.favouriteService.isLiked(this.characterId).then(isFav => {
             this.isLiked = isFav;
         })
     }
 
+    // Function to unfavourite characters
     favouriteCharacter() {
         this.favouriteService.favouriteCharacter(this.characterId).then(() => {
             this.isLiked = true;
         });
     }
 
+    // Function to favourite characters
     unfavouriteCharacter() {
         this.favouriteService.unfavouriteCharacter(this.characterId).then(() => {
             this.isLiked = false;
